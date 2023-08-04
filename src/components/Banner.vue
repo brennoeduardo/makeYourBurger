@@ -28,7 +28,6 @@ export default {
     text-align: center;
     font-size: 60px;
     margin-left: 40px;
-    position: fixed;
 }
 
 </style>
