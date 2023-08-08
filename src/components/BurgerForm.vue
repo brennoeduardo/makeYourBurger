@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Componente de Mensagem</p>
+        <Message :msg="msg" v-show="msg"/>
         <div>
             <form id="burger-form" @submit="createBurger">
                 <div class="input-container">
@@ -23,10 +23,14 @@
                 </div>
                 <div id="opcionais-container" class="input-container">
                     <label id="opcionais-title" for="opcionais">Selecione os opcionais:</label>
-                    <div class="checkbox-container" v-for="opcional in opcionaisdata" :key="opcional.id" >
-                        <input type="checkbox" id="opcionais" name="opcionais" :value="opcional.tipo">
+                    <div class="checkbox-container" v-for="opcional in opcionaisdata" :key="opcional.id">
+                        <input type="checkbox" id="opcionais" name="opcionais" v-model="opcionais" :value="opcional.tipo">
                         <span>{{ opcional.tipo }}</span>
                     </div>
+                </div>
+                <div class="input-container">
+                    <label for="msg">Mensagem</label>
+                    <textarea name="msg" id="msg" cols="10" rows="10" v-model="obs"></textarea>
                 </div>
                 <div>
                     <input type="submit" class="submit-btn" value="Criar meu Burger!">
@@ -38,6 +42,8 @@
 </template>
 
 <script>
+
+import Message from './Message.vue'
 export default {
     name: 'BurgerForm',
     data() {
@@ -50,6 +56,7 @@ export default {
             carne: null,
             opcionais: [],
             status: "Solicitado",
+            obs: null,
             msg: null
         }
     },
@@ -68,16 +75,39 @@ export default {
                 nome: this.nome,
                 carne: this.carne,
                 pao: this.pao,
-                opcionais: Array.from(this.opcionais),
-                status: "Solicitado"
+                opcionais: this.opcionais,
+                status: "Solicitado",
+                obs: this.obs
             }
 
-            console.log(data);
+            const dataJson = JSON.stringify(data)
+            const req = await fetch("http://localhost:3000/burgers", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: dataJson
+            })
+
+            const res = await req.json()
+
+            this.msg = `Pedido ${res.id} realizado com sucesso!`
+            
+            setTimeout(() => this.msg = '', 3000)
+
+            this.nome = ""
+            this.carne = ""
+            this.pao = ""
+            this.opcionais = ""
+            this.obs = ""
+
         },
     },
 
     mounted() {
         this.getIngredientes();
+    },
+
+    components: {
+        Message
     }
 }
 </script>

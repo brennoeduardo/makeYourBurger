@@ -89,5 +89,84 @@
       "tipo": "Finalizado"
     }
   ],
-  "burgers": []
+  "burgers": [
+    {
+      "nome": "Brenno",
+      "carne": "Alcatra",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Bacon",
+        "Tomate",
+        "Pepino",
+        "Picles"
+      ],
+      "status": "Solicitado",
+      "id": 1
+    },
+    {
+      "nome": "Brenno",
+      "carne": "Maminha",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Bacon",
+        "Salame"
+      ],
+      "status": "Solicitado",
+      "msg": "Sem gluten, por favor",
+      "id": 2
+    },
+    {
+      "nome": null,
+      "carne": null,
+      "pao": null,
+      "opcionais": [],
+      "status": "Solicitado",
+      "obs": null,
+      "id": 3
+    },
+    {
+      "nome": null,
+      "carne": null,
+      "pao": null,
+      "opcionais": [],
+      "status": "Solicitado",
+      "obs": null,
+      "id": 4
+    },
+    {
+      "nome": "Brenno",
+      "carne": "Maminha",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Bacon",
+        "Salame"
+      ],
+      "status": "Solicitado",
+      "obs": "Sem gluten",
+      "id": 5
+    },
+    {
+      "nome": "Brenno",
+      "carne": "Maminha",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Bacon"
+      ],
+      "status": "Solicitado",
+      "obs": "sem gluten",
+      "id": 6
+    },
+    {
+      "nome": "Brenno",
+      "carne": "Maminha",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Bacon",
+        "Salame"
+      ],
+      "status": "Solicitado",
+      "obs": null,
+      "id": 7
+    }
+  ]
 }
